@@ -112,108 +112,111 @@ precompile-collective = { default-features = false, path = "precompiles/collecti
 precompile-balance = { default-features = false, path = "precompiles/balance" }
 
 # Substrate Client
-sc-cli = { git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-sc-client-api = { git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-sc-rpc = { git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-sc-rpc-api = { git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-sc-transaction-pool = { git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-sc-transaction-pool-api = { git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-sc-chain-spec = { git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-sc-consensus = { git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-sc-consensus-aura = { git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-sc-consensus-grandpa = { git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-sc-consensus-grandpa-rpc = { git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-sc-consensus-manual-seal = { git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-sc-network = { git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-sc-network-sync = { git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-sc-service = { git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-sc-executor = { git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-sc-telemetry = { git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-sc-basic-authorship = { git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-substrate-prometheus-endpoint = { git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
+sc-cli = { git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+sc-client-api = { git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+sc-rpc = { git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+sc-rpc-api = { git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+sc-transaction-pool = { git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+sc-transaction-pool-api = { git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+sc-chain-spec = { git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+sc-consensus = { git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+sc-consensus-aura = { git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+sc-consensus-grandpa = { git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+sc-consensus-grandpa-rpc = { git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+sc-consensus-manual-seal = { git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+sc-network = { git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+sc-network-sync = { git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+sc-service = { git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+sc-executor = { git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+sc-telemetry = { git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+sc-basic-authorship = { git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+substrate-prometheus-endpoint = { git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
 
 # Substrate Primitive
-sp-io = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-sp-api = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-sp-block-builder = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-sp-blockchain = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-sp-consensus = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-sp-consensus-aura = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-sp-consensus-grandpa = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-sp-core = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-sp-inherents = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-sp-offchain = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-sp-runtime = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-sp-runtime-interface = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-sp-session = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-sp-std = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-sp-transaction-pool = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-sp-version = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-sp-staking = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-sp-keystore = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-sp-timestamp = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
+sp-io = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+sp-api = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+sp-block-builder = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+sp-blockchain = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+sp-consensus = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+sp-consensus-aura = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+sp-consensus-grandpa = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+sp-core = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+sp-inherents = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+sp-offchain = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+sp-runtime = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+sp-runtime-interface = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+sp-session = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+sp-std = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+sp-transaction-pool = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+sp-version = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+sp-staking = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+sp-keystore = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+sp-timestamp = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
 
 # Substrate FRAME
-substrate-frame-rpc-system = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-frame-system = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-frame-support = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-frame-executive = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-frame-system-rpc-runtime-api = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-frame-benchmarking = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-frame-benchmarking-cli = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-frame-system-benchmarking = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-pallet-aura = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-pallet-balances = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-pallet-grandpa = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-pallet-sudo = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-pallet-timestamp = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-pallet-transaction-payment = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-pallet-transaction-payment-rpc = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-pallet-transaction-payment-rpc-runtime-api = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-pallet-scheduler = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-pallet-session = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-pallet-authorship = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-pallet-utility = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-pallet-collective = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-pallet-democracy = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-pallet-membership = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-pallet-im-online = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-pallet-offences = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-pallet-treasury = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-pallet-identity = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-pallet-preimage = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
+substrate-frame-rpc-system = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+frame-system = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+frame-support = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+frame-executive = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+frame-system-rpc-runtime-api = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+frame-benchmarking = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+frame-benchmarking-cli = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+frame-system-benchmarking = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+pallet-aura = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+pallet-balances = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+pallet-grandpa = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+pallet-sudo = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+pallet-timestamp = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+pallet-transaction-payment = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+pallet-transaction-payment-rpc = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+pallet-transaction-payment-rpc-runtime-api = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+pallet-scheduler = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+pallet-session = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+pallet-authorship = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+pallet-utility = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+pallet-collective = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+pallet-democracy = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+pallet-membership = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+pallet-im-online = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+pallet-offences = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+pallet-treasury = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+pallet-identity = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+pallet-preimage = { default-features = false, git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
 
 # Substrate Builds
-substrate-wasm-builder = { git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
-substrate-build-script-utils = { git = "https://github.com/bifrost-platform/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43" }
+substrate-wasm-builder = { git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
+substrate-build-script-utils = { git = "https://github.com/alstjd0921/bifrost-substrate", branch = "bifrost-polkadot-v0.9.43-with-R" }
 
 # Frontier Client
-fc-db = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43" }
-fc-rpc = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43" }
-fc-mapping-sync = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43" }
-fc-rpc-core = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43" }
-fc-rpc-debug = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43" }
-fc-rpc-trace = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43" }
-fc-rpc-txpool = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43" }
+fc-db = { default-features = false, git = "https://github.com/alstjd0921/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43-with-R" }
+fc-rpc = { default-features = false, git = "https://github.com/alstjd0921/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43-with-R" }
+fc-mapping-sync = { default-features = false, git = "https://github.com/alstjd0921/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43-with-R" }
+fc-rpc-core = { default-features = false, git = "https://github.com/alstjd0921/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43-with-R" }
+fc-rpc-debug = { default-features = false, git = "https://github.com/alstjd0921/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43-with-R" }
+fc-rpc-trace = { default-features = false, git = "https://github.com/alstjd0921/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43-with-R" }
+fc-rpc-txpool = { default-features = false, git = "https://github.com/alstjd0921/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43-with-R" }
 
 # Frontier Primitive
-fp-self-contained = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43" }
-fp-storage = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43" }
-fp-evm = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43" }
-fp-ext = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43" }
-fp-rpc = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43" }
-fp-rpc-debug = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43" }
-fp-rpc-txpool = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43" }
-fp-rpc-evm-tracing-events = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43" }
+fp-self-contained = { default-features = false, git = "https://github.com/alstjd0921/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43-with-R" }
+fp-storage = { default-features = false, git = "https://github.com/alstjd0921/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43-with-R" }
+fp-evm = { default-features = false, git = "https://github.com/alstjd0921/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43-with-R" }
+fp-ext = { default-features = false, git = "https://github.com/alstjd0921/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43-with-R" }
+fp-rpc = { default-features = false, git = "https://github.com/alstjd0921/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43-with-R" }
+fp-rpc-debug = { default-features = false, git = "https://github.com/alstjd0921/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43-with-R" }
+fp-rpc-txpool = { default-features = false, git = "https://github.com/alstjd0921/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43-with-R" }
+fp-rpc-evm-tracing-events = { default-features = false, git = "https://github.com/alstjd0921/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43-with-R" }
 
 # Frontier Runtime
-evm-tracer = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43" }
+evm-tracer = { default-features = false, git = "https://github.com/alstjd0921/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43-with-R" }
 
 # Frontier FRAME
-pallet-evm = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43" }
-pallet-ethereum = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43" }
-pallet-base-fee = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43" }
-pallet-evm-precompile-simple = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43" }
-pallet-evm-precompile-bn128 = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43" }
-pallet-evm-precompile-modexp = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43" }
-pallet-evm-precompile-blake2 = { default-features = false, git = "https://github.com/bifrost-platform/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43" }
+pallet-evm = { default-features = false, git = "https://github.com/alstjd0921/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43-with-R" }
+pallet-ethereum = { default-features = false, git = "https://github.com/alstjd0921/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43-with-R" }
+pallet-base-fee = { default-features = false, git = "https://github.com/alstjd0921/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43-with-R" }
+pallet-evm-precompile-simple = { default-features = false, git = "https://github.com/alstjd0921/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43-with-R" }
+pallet-evm-precompile-bn128 = { default-features = false, git = "https://github.com/alstjd0921/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43-with-R" }
+pallet-evm-precompile-modexp = { default-features = false, git = "https://github.com/alstjd0921/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43-with-R" }
+pallet-evm-precompile-blake2 = { default-features = false, git = "https://github.com/alstjd0921/bifrost-frontier", branch = "bifrost-polkadot-v0.9.43-with-R" }
+
+bifrost-relayer = { default-features = false, git = "https://github.com/alstjd0921/bifrost-relayer.rs", branch = "with-R" }
+br-primitives = { default-features = false, git = "https://github.com/alstjd0921/bifrost-relayer.rs", branch = "with-R" }

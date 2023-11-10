@@ -1,5 +1,9 @@
 //! Service and ServiceFactory implementation. Specialized wrapper over substrate service.
 
+use bifrost_relayer::service::{
+	construct_handlers, construct_managers, construct_periodics, print_relay_targets,
+	spawn_relayer_tasks, FullDeps as RelayerDeps,
+};
 use bp_core::*;
 use fc_db::Backend;
 use futures::StreamExt;
@@ -20,6 +24,8 @@ use fc_mapping_sync::{kv::MappingSyncWorker, SyncStrategy};
 use fc_rpc::EthTask;
 use fc_rpc_core::types::{FeeHistoryCache, FilterPool};
 
+use bifrost_relayer::verification::assert_configuration_validity;
+use br_primitives::bootstrap::BootstrapSharedData;
 use sc_client_api::{BlockBackend, BlockchainEvents};
 use sc_consensus_aura::{ImportQueueParams, SlotProportion, StartAuraParams};
 pub use sc_executor::NativeElseWasmExecutor;
@@ -251,6 +257,8 @@ pub fn new_full_base(
 		Vec::default(),
 	));
 
+	let relayer_configuration = config.relayer_config.clone();
+
 	let (network, system_rpc_tx, tx_handler_controller, network_starter, sync_service) =
 		sc_service::build_network(sc_service::BuildNetworkParams {
 			config: &config,
@@ -394,7 +402,43 @@ pub fn new_full_base(
 	}
 
 	network_starter.start_network();
-	Ok(NewFullBase { task_manager, client, network, transaction_pool, rpc_handlers })
+
+	match relayer_configuration {
+		None => Ok(NewFullBase { task_manager, client, network, transaction_pool, rpc_handlers }),
+		Some(relayer_configuration) => {
+			assert_configuration_validity(&relayer_configuration);
+
+			let bootstrap_shared_data = BootstrapSharedData::new(&relayer_configuration);
+
+			let manager_deps =
+				construct_managers(&relayer_configuration, bootstrap_shared_data.clone());
+			let periodic_deps = construct_periodics(bootstrap_shared_data.clone(), &manager_deps);
+			let handler_deps = construct_handlers(
+				&relayer_configuration,
+				&manager_deps,
+				bootstrap_shared_data.clone(),
+			);
+
+			print_relay_targets(&manager_deps);
+
+			Ok(NewFullBase {
+				task_manager: spawn_relayer_tasks(
+					task_manager,
+					RelayerDeps {
+						bootstrap_shared_data,
+						manager_deps,
+						periodic_deps,
+						handler_deps,
+					},
+					&relayer_configuration,
+				),
+				client,
+				network,
+				transaction_pool,
+				rpc_handlers,
+			})
+		},
+	}
 }
 
 pub fn build_rpc_extensions_builder(
