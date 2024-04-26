@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+
+  boot_node:
+    container_name: boot_node
+    image: munsunout/bifrost-node:latest # private repository of docker hub for test
+    volumes:
+      - ./:/data
+    ports:
+      - "9933:9933"
+      - "30333:30333"
+    environment:
+      - DIR="/data/chain0"
+      - GENESIS_P2P_PORT=30333
+      - GENESIS_RPC_PORT=9933
+    entrypoint: ["/bin/sh", "-c"]
+    command: "/data/run_boot_node.sh"
+
+  peer_node:
+    container_name: peer_node
+    image: munsunout/bifrost-node:latest
+    volumes:
+      - ./:/data
+    ports:
+      - "9934:9934"
+      - "30334:30334"
+    environment:
+      - DIR="/data/chain1"
+      - GENESIS_P2P_PORT=30333
+      - GENESIS_RPC_PORT=9933
+      - PEER_P2P_PORT=30334
+      - PEER_RPC_PORT=9934
+    entrypoint: ["/bin/sh", "-c"]
+    command: ["/data/run_peer_node.sh"]
