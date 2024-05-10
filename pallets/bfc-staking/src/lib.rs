@@ -1035,22 +1035,21 @@ impl<
 			// to call
 			let mut nominator_state = <NominatorState<T>>::get(&lowest_bottom_to_be_kicked.owner)
 				.ok_or(<Error<T>>::NominatorDNE)?;
-			let leaving = nominator_state.nominations.len() == 1usize;
-			nominator_state.rm_nomination(candidate);
-			// nominator_state.requests.remove_request(&candidate);
-			Pallet::<T>::deposit_event(Event::NominationKicked {
-				nominator: lowest_bottom_to_be_kicked.owner.clone(),
-				candidate: candidate.clone(),
-				unstaked_amount: lowest_bottom_to_be_kicked.amount,
-			});
-			if leaving {
+			let is_last_nominator = nominator_state.is_last_nominator::<T>();
+			if is_last_nominator {
 				<NominatorState<T>>::remove(&lowest_bottom_to_be_kicked.owner);
 				Pallet::<T>::deposit_event(Event::NominatorLeft {
 					nominator: lowest_bottom_to_be_kicked.owner,
 					unstaked_amount: lowest_bottom_to_be_kicked.amount,
 				});
 			} else {
+				nominator_state.rm_nomination(candidate);
 				<NominatorState<T>>::insert(&lowest_bottom_to_be_kicked.owner, nominator_state);
+				Pallet::<T>::deposit_event(Event::NominationKicked {
+					nominator: lowest_bottom_to_be_kicked.owner.clone(),
+					candidate: candidate.clone(),
+					unstaked_amount: lowest_bottom_to_be_kicked.amount,
+				});
 			}
 			false
 		} else {
@@ -1583,6 +1582,67 @@ impl<
 		}
 	}
 
+	/// check request for prevent delete pending request by other revoke request
+	pub fn check_request(
+		&self,
+		selected_request: &NominationRequest<AccountId, Balance>,
+		candidate: &AccountId,
+	) -> bool {
+		for (_, given_nomination_requests) in self.requests() {
+			if given_nomination_requests.validator_request.contains_key(candidate) {
+				if let Some(given_nomination_request) =
+					given_nomination_requests.validator_request.get(candidate)
+				{
+					if selected_request.action == NominationChange::Revoke
+						|| selected_request.action == NominationChange::Leave
+							&& given_nomination_request.action == NominationChange::Decrease
+					{
+						return false;
+					}
+				}
+			}
+		}
+
+		return true;
+	}
+
+	// pub fn arrange_requests(&mut self, selected_round_index: RoundIndex, candidate: &AccountId) {
+	// 	for (given_round_index, mut given_nomination_requests) in self.requests() {
+	// 		if selected_round_index > given_round_index
+	// 			&& given_nomination_requests.validator_request.contains_key(candidate)
+	// 		{
+	// 			if let Some(selected_nomination_requests) =
+	// 				self.requests.requests.get_mut(&selected_round_index)
+	// 			{
+	// 				if let Some(selected_nomination_request) =
+	// 					selected_nomination_requests.validator_request.get_mut(candidate)
+	// 				{
+	// 					if let Some(given_nomination_request) =
+	// 						given_nomination_requests.validator_request.remove(candidate)
+	// 					{
+	// 						if given_nomination_request.action == NominationChange::Revoke
+	// 							|| given_nomination_request.action == NominationChange::Leave
+	// 						{
+
+	// 							self.requests.requests
+
+	// 							let new_selected_nomination_request = NominationRequest {
+	// 								validator: candidate.clone(),
+	// 								amount: selected_nomination_request.amount
+	// 									+ given_nomination_request.amount,
+	// 								action: selected_nomination_request.action,
+	// 							};
+	// 							selected_nomination_requests
+	// 								.validator_request
+	// 								.insert(candidate.clone(), new_selected_nomination_request);
+	// 						}
+	// 					}
+	// 				}
+	// 			}
+	// 		}
+	// 	}
+	// }
+
 	pub fn replace_requests(&mut self, old: &AccountId, new: &AccountId) {
 		for (_, mut nomination_requests) in self.requests() {
 			if nomination_requests.validator_request.contains_key(old) {
@@ -1724,6 +1784,39 @@ impl<
 		Err(Error::<T>::NominationDNE.into())
 	}
 
+	pub fn ok_to_execute<T: Config>(
+		&self,
+		execute_round: RoundIndex,
+		candidate: AccountId,
+	) -> Result<(), DispatchError>
+	where
+		T::AccountId: From<AccountId>,
+	{
+		let now = <Round<T>>::get().current_round_index;
+
+		// None of candidate founded in nominator`s pending requests
+		let orders = self
+			.requests
+			.requests
+			.get(&execute_round)
+			.ok_or(Error::<T>::PendingNominationRequestDNE)?;
+
+		// None of candidate founded in nominator`s pending request
+		let order = orders
+			.validator_request
+			.get(&candidate)
+			.ok_or(Error::<T>::PendingNominationRequestDNE)?;
+
+		ensure!(execute_round >= now, Error::<T>::PendingNominationRequestNotDueYet);
+
+		ensure!(
+			self.check_request(order, &candidate),
+			Error::<T>::PendingNominationRequestRemained
+		);
+
+		Ok(())
+	}
+
 	pub fn ok_to_decrease<T: Config>(
 		&self,
 		candidate: AccountId,
@@ -1740,12 +1833,6 @@ impl<
 
 		let expected_amt: BalanceOf<T> = (*nominate_amount - amount).into();
 		let net_total: BalanceOf<T> = self.total.saturating_sub(amount).into();
-
-		// Requestment is already subjected
-		// ensure!(
-		// 	self.requests.requests.get(&candidate).is_none(),
-		// 	Error::<T>::PendingNominationRequestAlreadyExists
-		// );
 
 		// Given nominator is leaving
 		ensure!(!self.is_leaving(), Error::<T>::NominatorAlreadyLeaving);
@@ -2037,7 +2124,7 @@ impl<
 	}
 }
 
-#[derive(Clone, Eq, PartialEq, Encode, Decode, RuntimeDebug, TypeInfo)]
+#[derive(Clone, Copy, Eq, PartialEq, Encode, Decode, RuntimeDebug, TypeInfo)]
 /// Changes requested by the nominator
 /// - limit of 1 ongoing change per nomination
 pub enum NominationChange {

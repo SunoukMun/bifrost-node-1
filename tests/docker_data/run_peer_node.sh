@@ -14,14 +14,14 @@ fi
 mkdir -p  $DIR
 
 #Step 2. 제네시스 노드 bootnodes 가지고오기
-# export IP_ADDRESS=$(hostname -i)
+# export BOOT_NODE_IP=$(hostname -i)
 export BOOT_NODE_IP=$(getent hosts boot_node | awk '{ print $1 }')
 export NETWORK_IDENTIFIER=$(curl boot_node:${GENESIS_RPC_PORT} -H "Content-Type:application/json;charset=utf-8" -d '{  "jsonrpc":"2.0", "id":1, "method":"system_localPeerId", "params": []}' | jq -r ".result")
 
 # run a new peer node with the given arguments
 bifrost-node \
-  --base-path /data/chain1 \
-  --chain /data/bifrost-dev.json \
+  --base-path $DIR \
+  --chain $CHAIN_DIR \
   --port $PEER_P2P_PORT \
   --rpc-port $PEER_RPC_PORT \
   --validator \
@@ -30,4 +30,4 @@ bifrost-node \
   --rpc-external \
   --bootnodes /ip4/${BOOT_NODE_IP}/tcp/${GENESIS_P2P_PORT}/p2p/${NETWORK_IDENTIFIER} \
   --runtime-cache-size 64 \
-  --name PEER-NODE
+  --name $NODE_NAME

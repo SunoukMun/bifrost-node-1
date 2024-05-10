@@ -5,6 +5,9 @@ use bifrost_dev_runtime::{
 use bifrost_dev_constants::currency::{GWEI, SUPPLY_FACTOR, UNITS as BFC};
 
 use bifrost_dev_runtime as devnet;
+use bifrost_dev_runtime::EVMConfig;
+use bifrost_dev_runtime::Precompiles;
+use fp_evm::GenesisAccount;
 
 use pallet_im_online::sr25519::AuthorityId as ImOnlineId;
 use sc_service::ChainType;
@@ -38,9 +41,9 @@ pub fn inflation_config() -> InflationInfo<Balance> {
 		)
 	}
 	let annual = Range {
-		min: Perbill::from_percent(7),
-		ideal: Perbill::from_percent(13),
-		max: Perbill::from_percent(15),
+		min: Perbill::from_percent(70),
+		ideal: Perbill::from_percent(130),
+		max: Perbill::from_percent(150),
 	};
 	InflationInfo {
 		// staking expectations
@@ -78,7 +81,7 @@ pub fn development_config() -> Result<ChainSpec, String> {
 					get_from_seed::<AuraId>("Alice"),
 					get_from_seed::<GrandpaId>("Alice"),
 					get_from_seed::<ImOnlineId>("Alice"),
-					1_000 * BFC * SUPPLY_FACTOR,
+					4_000_000 * BFC * SUPPLY_FACTOR,
 				)],
 				// Nominations
 				vec![],
@@ -170,6 +173,8 @@ fn development_genesis(
 	root_key: AccountId,
 	endowed_accounts: Vec<AccountId>,
 ) -> devnet::RuntimeGenesisConfig {
+	let revert_bytecode = vec![0x60, 0x00, 0x60, 0x00, 0xFD];
+
 	devnet::RuntimeGenesisConfig {
 		system: devnet::SystemConfig {
 			// Add Wasm runtime to storage.
@@ -196,7 +201,24 @@ fn development_genesis(
 		im_online: Default::default(),
 		sudo: devnet::SudoConfig { key: Some(root_key) },
 		transaction_payment: Default::default(),
-		evm: Default::default(),
+		evm: EVMConfig {
+			// We need _some_ code inserted at the precompile address so that
+			// the evm will actually call the address.
+			accounts: Precompiles::used_addresses()
+				.map(|addr| {
+					(
+						addr.into(),
+						GenesisAccount {
+							nonce: Default::default(),
+							balance: Default::default(),
+							storage: Default::default(),
+							code: revert_bytecode.clone(),
+						},
+					)
+				})
+				.collect(),
+			..Default::default()
+		},
 		ethereum: Default::default(),
 		base_fee: devnet::BaseFeeConfig::new(
 			sp_core::U256::from(1_000 * GWEI * SUPPLY_FACTOR),

@@ -249,6 +249,8 @@ pub mod pallet {
 		PendingNominationRequestDNE,
 		/// A pending(scheduled) nomination request already exists.
 		PendingNominationRequestAlreadyExists,
+		/// the other pending(scheduled) nomination request remained.
+		PendingNominationRequestRemained,
 		/// Cannot execute the pending(scheduled) nominator request yet.
 		PendingNominationRequestNotDueYet,
 		/// Cannot nominate if the given amount is less than the lowest bottom.
@@ -1819,7 +1821,11 @@ pub mod pallet {
 			candidate: T::AccountId,
 		) -> DispatchResultWithPostInfo {
 			let nominator = ensure_signed(origin)?;
+
 			let mut state = <NominatorState<T>>::get(&nominator).ok_or(Error::<T>::NominatorDNE)?;
+
+			let _ = state.ok_to_execute::<T>(execute_round, candidate.clone())?;
+
 			state.execute_pending_request::<T>(execute_round, candidate)?;
 			Ok(().into())
 		}
